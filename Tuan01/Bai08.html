@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Tính tiền boa và trung bình cộng</h1>
+
+    <script>
+        // Hàm tính tiền boa
+        function calcTip(billAmount) {
+            return billAmount >= 50 && billAmount <= 300 ? billAmount * 0.15 : billAmount * 0.2;
+        }
+
+        // Mảng chứa các giá trị hóa đơn thử nghiệm
+        const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+
+        // Mảng trống cho số tiền boa và tổng số
+        const tips = [];
+        const totals = [];
+
+        // Tính tiền boa và tổng giá trị cho mỗi giá trị hóa đơn
+        for (let i = 0; i < bills.length; i++) {
+            const tip = calcTip(bills[i]);
+            tips.push(tip);
+            totals.push(bills[i] + tip);
+        }
+
+        // Hàm tính trung bình cộng của mảng
+        function calcAverage(arr) {
+            let sum = 0;
+            for (let i = 0; i < arr.length; i++) {
+                sum += arr[i];
+            }
+            return sum / arr.length;
+        }
+
+        // Tính trung bình cộng của các tổng giá trị
+        const averageTotal = calcAverage(totals);
+
+        console.log("Tiền boa:", tips);
+        console.log("Tổng giá trị:", totals);
+        console.log("Trung bình cộng của tổng giá trị:", averageTotal.toFixed(2));
+    </script>
+</body>
+
+</html>

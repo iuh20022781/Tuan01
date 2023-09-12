@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Chương trình dự báo nhiệt độ</h1>
+
+    <script>
+        // Hàm in dự báo nhiệt độ
+        function printForecast(temperatures) {
+            let forecast = "";
+            for (let i = 0; i < temperatures.length; i++) {
+                forecast += `___${temperatures[i]}°C trong ${i + 1} ngày `;
+            }
+            console.log(forecast);
+        }
+
+        // Dữ liệu thử nghiệm
+        const forecast1 = [17, 21, 23];
+        const forecast2 = [12, 5, -5, 0, 4];
+
+        // In dự báo nhiệt độ cho các tập dữ liệu thử nghiệm
+        console.log("Dự báo thời tiết 1:");
+        printForecast(forecast1);
+
+        console.log("Dự báo thời tiết 2:");
+        printForecast(forecast2);
+    </script>
+</body>
+
+</html>
