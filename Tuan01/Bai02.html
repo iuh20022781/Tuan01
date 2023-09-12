@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>So sánh chỉ số BMI của Mark và John</h1>
+
+    <label for="markWeight">Khối lượng của Mark (kg):</label>
+    <input type="number" id="markWeight" step="0.01"><br>
+
+    <label for="markHeight">Chiều cao của Mark (m):</label>
+    <input type="number" id="markHeight" step="0.01"><br>
+
+    <label for="johnWeight">Khối lượng của John (kg):</label>
+    <input type="number" id="johnWeight" step="0.01"><br>
+
+    <label for="johnHeight">Chiều cao của John (m):</label>
+    <input type="number" id="johnHeight" step="0.01"><br>
+
+    <button onclick="compareBMI()">So sánh BMI</button>
+
+    <p id="result"></p>
+
+    <script>
+        // Hàm tính chỉ số BMI
+        function calculateBMI(weight, height) {
+            return weight / (height * height);
+        }
+
+        // Hàm so sánh chỉ số BMI và hiển thị kết quả
+        function compareBMI() {
+            // Lấy giá trị nhập từ người dùng
+            const markWeight = parseFloat(document.getElementById("markWeight").value);
+            const markHeight = parseFloat(document.getElementById("markHeight").value);
+            const johnWeight = parseFloat(document.getElementById("johnWeight").value);
+            const johnHeight = parseFloat(document.getElementById("johnHeight").value);
+
+            // Kiểm tra nếu có dữ liệu hợp lệ
+            if (!isNaN(markWeight) && !isNaN(markHeight) && !isNaN(johnWeight) && !isNaN(johnHeight)) {
+                // Tính chỉ số BMI của Mark và John
+                const markBMI = calculateBMI(markWeight, markHeight);
+                const johnBMI = calculateBMI(johnWeight, johnHeight);
+
+                // So sánh chỉ số BMI
+                let result = "";
+                if (markBMI > johnBMI) {
+                    result = `Chỉ số BMI của Mark (${markBMI.toFixed(1)}) cao hơn John (${johnBMI.toFixed(1)})!`;
+                } else if (johnBMI > markBMI) {
+                    result = `Chỉ số BMI của John (${johnBMI.toFixed(1)}) cao hơn Mark (${markBMI.toFixed(1)})!`;
+                } else {
+                    result = `Chỉ số BMI của Mark và John bằng nhau (${markBMI.toFixed(1)})!`;
+                }
+
+                // Hiển thị kết quả
+                const resultElement = document.getElementById("result");
+                resultElement.textContent = result;
+            } else {
+                // Nếu dữ liệu không hợp lệ, hiển thị thông báo lỗi
+                const resultElement = document.getElementById("result");
+                resultElement.textContent = "Vui lòng nhập dữ liệu hợp lệ.";
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Cuộc thi thể dục dụng cụ</h1>
+
+    <label for="dolphinsScore1">Điểm của Dolphins lần 1:</label>
+    <input type="number" id="dolphinsScore1"><br>
+
+    <label for="dolphinsScore2">Điểm của Dolphins lần 2:</label>
+    <input type="number" id="dolphinsScore2"><br>
+
+    <label for="dolphinsScore3">Điểm của Dolphins lần 3:</label>
+    <input type="number" id="dolphinsScore3"><br>
+
+    <label for="koalasScore1">Điểm của Koalas lần 1:</label>
+    <input type="number" id="koalasScore1"><br>
+
+    <label for="koalasScore2">Điểm của Koalas lần 2:</label>
+    <input type="number" id="koalasScore2"><br>
+
+    <label for="koalasScore3">Điểm của Koalas lần 3:</label>
+    <input type="number" id="koalasScore3"><br>
+
+    <button onclick="calculateWinner()">Xác định đội chiến thắng</button>
+
+    <p id="result"></p>
+
+    <script>
+        // Hàm tính điểm trung bình
+        function calculateAverage(score1, score2, score3) {
+            return (score1 + score2 + score3) / 3;
+        }
+
+        // Hàm xác định đội chiến thắng
+        function calculateWinner() {
+            // Lấy giá trị điểm từ người dùng
+            const dolphinsScore1 = parseFloat(document.getElementById("dolphinsScore1").value);
+            const dolphinsScore2 = parseFloat(document.getElementById("dolphinsScore2").value);
+            const dolphinsScore3 = parseFloat(document.getElementById("dolphinsScore3").value);
+            const koalasScore1 = parseFloat(document.getElementById("koalasScore1").value);
+            const koalasScore2 = parseFloat(document.getElementById("koalasScore2").value);
+            const koalasScore3 = parseFloat(document.getElementById("koalasScore3").value);
+
+            // Tính điểm trung bình của Dolphins và Koalas
+            const dolphinsAverage = calculateAverage(dolphinsScore1, dolphinsScore2, dolphinsScore3);
+            const koalasAverage = calculateAverage(koalasScore1, koalasScore2, koalasScore3);
+
+            // Kiểm tra điểm tối thiểu và so sánh
+            if (dolphinsAverage >= 100 && koalasAverage >= 100) {
+                if (dolphinsAverage > koalasAverage) {
+                    document.getElementById("result").textContent = `Dolphins thắng với điểm trung bình ${dolphinsAverage.toFixed(1)} điểm!`;
+                } else if (koalasAverage > dolphinsAverage) {
+                    document.getElementById("result").textContent = `Koalas thắng với điểm trung bình ${koalasAverage.toFixed(1)} điểm!`;
+                } else {
+                    document.getElementById("result").textContent = `Hòa với cả hai đội đạt điểm trung bình ${dolphinsAverage.toFixed(1)} điểm!`;
+                }
+            } else {
+                document.getElementById("result").textContent = "Không có đội nào giành được cúp.";
+            }
+        }
+    </script>
+</body>
+
+</html>

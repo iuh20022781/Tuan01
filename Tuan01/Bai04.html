@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Tính tiền boa</h1>
+
+    <label for="billAmount">Giá trị hóa đơn:</label>
+    <input type="number" id="billAmount" step="0.01"><br>
+
+    <button onclick="calculateTip()">Tính tiền boa</button>
+
+    <p id="result"></p>
+
+    <script>
+        // Hàm tính tiền boa
+        function calculateTip() {
+            // Lấy giá trị nhập từ người dùng
+            const billAmount = parseFloat(document.getElementById("billAmount").value);
+
+            // Tính tiền boa tùy vào giá trị hóa đơn sử dụng toán tử ba ngôi
+            const tip = billAmount >= 50 && billAmount <= 300 ? billAmount * 0.15 : billAmount * 0.2;
+
+            // Tính tổng giá trị (hóa đơn + tiền boa)
+            const totalAmount = billAmount + tip;
+
+            // Hiển thị kết quả
+            const resultElement = document.getElementById("result");
+            resultElement.textContent = `Hóa đơn là ${billAmount.toFixed(2)}, tiền boa là ${tip.toFixed(2)} và tổng giá trị là ${totalAmount.toFixed(2)}`;
+        }
+    </script>
+</body>
+
+</html>

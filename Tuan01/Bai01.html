@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Chỉ số BMI của Mark và John</h1>
+
+    <label for="markWeight">Khối lượng của Mark (kg):</label>
+    <input type="number" id="markWeight" step="0.01"><br>
+
+    <label for="markHeight">Chiều cao của Mark (m):</label>
+    <input type="number" id="markHeight" step="0.01"><br>
+
+    <label for="johnWeight">Khối lượng của John (kg):</label>
+    <input type="number" id="johnWeight" step="0.01"><br>
+
+    <label for="johnHeight">Chiều cao của John (m):</label>
+    <input type="number" id="johnHeight" step="0.01"><br>
+
+    <button onclick="calculateBMI()">Tính BMI</button>
+
+    <p id="result"></p>
+
+    <script>
+        // Hàm tính chỉ số BMI
+        function calculateBMI() {
+            // Lấy giá trị nhập từ người dùng
+            const markWeight = parseFloat(document.getElementById("markWeight").value);
+            const markHeight = parseFloat(document.getElementById("markHeight").value);
+            const johnWeight = parseFloat(document.getElementById("johnWeight").value);
+            const johnHeight = parseFloat(document.getElementById("johnHeight").value);
+
+            // Kiểm tra nếu có dữ liệu hợp lệ
+            if (!isNaN(markWeight) && !isNaN(markHeight) && !isNaN(johnWeight) && !isNaN(johnHeight)) {
+                // Tính chỉ số BMI của Mark và John
+                const markBMI = markWeight / (markHeight * markHeight);
+                const johnBMI = johnWeight / (johnHeight * johnHeight);
+
+                // Tạo biến Boolean 'markHigherBMI' để kiểm tra Mark có chỉ số BMI cao hơn John hay không
+                const markHigherBMI = markBMI > johnBMI;
+
+                // Hiển thị kết quả
+                const resultElement = document.getElementById("result");
+                resultElement.innerHTML = `Mark's BMI: ${markBMI.toFixed(2)}<br>John's BMI: ${johnBMI.toFixed(2)}<br>Mark có chỉ số BMI cao hơn John: ${markHigherBMI}`;
+            } else {
+                // Nếu dữ liệu không hợp lệ, hiển thị thông báo lỗi
+                const resultElement = document.getElementById("result");
+                resultElement.innerHTML = "Vui lòng nhập dữ liệu hợp lệ.";
+            }
+        }
+    </script>
+</body>
+
+</html>
